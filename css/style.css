@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 60px; /* tambahkan ini */
+}
+
+
+body {
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  color: #111;
+  background: #fdfdfd;
+  height: 100%;
+  margin:0
+  
+  }
+
+header {
+  background: #f6f6f6;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  margin: 0 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+   display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0%;
+  max-width: max-content;
+  }
+
+.hero img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* about */
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+  margin: 20px ;
+  max-width: max-content;
+}
+
+.about.text {
+  flex: 0.35;
+  min-width: 300px;
+}
+
+.about p {
+  padding: 0;
+  margin: 0;
+}
+
+
+.gallery {
+  display: flex;
+  flex: 0.65;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  justify-content: center;
+  min-width: 300px;
+  gap: 10px;
+}
+
+.gallery img {
+  width: 35%;
+  max-width: 500px;
+  border-radius: 0px;
+  object-fit: cover;
+}
+
+/* experience*/
+
+.experience {
+display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  margin: 20px  ;
+  max-width: max-content;
+}
+
+.experience.text {
+  flex: 0.35;
+  min-width: 300px;
+  margin:auto
+}
+
+.experience p {
+     display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.jahit {
+  display: flex;
+  flex: 1;
+   flex-wrap: wrap;
+  justify-content: center;
+  min-width: 300px;
+}
+
+.Jahit img {
+  width: 100%;
+  height: 500px;        
+  object-fit: cover;    
+  border-radius: 0px;
+}
+
+/*why us*/
+
+
+.why-us {
+display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  margin: 20px  ;
+  max-width: max-content;
+}
+
+.why-us.text {
+  flex: 0.35;
+  min-width: 300px;
+  margin:auto
+}
+
+.why-us p {
+       display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+.JasNavy {
+  display: flex;
+  flex: 1;
+   flex-wrap: wrap;
+  justify-content: center;
+  min-width: 300px;
+}
+
+.JasNavy img {
+  width: 100%;
+  height: 500px;        
+  object-fit: cover;    
+  border-radius: 0px;
+}
+
+/*services*/
+
+.services {
+  display: flex;
+  justify-content: space-between;
+   flex-direction: row-reverse;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 1rem;
+  margin: 20px  ;
+  max-width: max-content;
+}
+
+.services.text {
+  flex: 0.35;
+  max-width: 300px;
+  display: flex;
+}
+
+.services.p {
+     display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+
+
+button {
+  padding: 10px 20px;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+
+
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 20px;
+  background: #f0f0f0;
+  flex-wrap: wrap;
+}
+
+footer div {
+  width: 45%;
+}
+
+footer h3, footer h4 {
+  margin-bottom: 10px;
+}
+
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist li::before {
+  content: '✓';
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
