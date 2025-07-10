@@ -1,28 +1,37 @@
+@font-face {
+  font-family: 'Rische Demo';
+  src: url('../fonts/rische-demo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
-  margin-bottom: 60px; /* tambahkan ini */
+h1, h2 , h3 {
+  font-family: 'Rische Demo', serif;
 }
 
 
 body {
-  font-family: 'Georgia', serif;
+  font-family: 'Open sans', serif;
   line-height: 1.6;
   color: #111;
   background: #fdfdfd;
   height: 100%;
-  margin:0
-  
-  }
 
+}
+
+section {
+  padding: 40px 20px;
+  margin-bottom: 60px;
+}
+
+/* Header */
 header {
   background: #f6f6f6;
   padding: 20px;
@@ -34,6 +43,7 @@ header h1 {
   letter-spacing: 1px;
 }
 
+/* Navigation */
 nav {
   margin-top: 10px;
 }
@@ -45,14 +55,14 @@ nav a {
   font-weight: bold;
 }
 
+/* Hero */
 .hero {
-   display: flex;
+  display: flex;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  padding: 0%;
-  max-width: max-content;
-  }
+  padding: 0;
+}
 
 .hero img {
   width: 50%;
@@ -60,204 +70,228 @@ nav a {
   object-fit: cover;
 }
 
-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-/* about */
-.about {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  padding: 2rem 1rem;
-  margin: 20px ;
-  max-width: max-content;
-}
-
-.about.text {
-  flex: 0.35;
-  min-width: 300px;
-}
-
-.about p {
-  padding: 0;
-  margin: 0;
-}
-
-
-.gallery {
-  display: flex;
-  flex: 0.65;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  justify-content: center;
-  min-width: 300px;
-  gap: 10px;
-}
-
-.gallery img {
-  width: 35%;
-  max-width: 500px;
-  border-radius: 0px;
-  object-fit: cover;
-}
-
-/* experience*/
-
-.experience {
-display: flex;
-  width: 100vw;
-  height: 100vh;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem 1rem;
-  margin: 20px  ;
-  max-width: max-content;
-}
-
-.experience.text {
-  flex: 0.35;
-  min-width: 300px;
-  margin:auto
-}
-
-.experience p {
-     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-}
-
-.jahit {
-  display: flex;
-  flex: 1;
-   flex-wrap: wrap;
-  justify-content: center;
-  min-width: 300px;
-}
-
-.Jahit img {
-  width: 100%;
-  height: 500px;        
-  object-fit: cover;    
-  border-radius: 0px;
-}
-
-/*why us*/
-
-
-.why-us {
-display: flex;
+.hero {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem 1rem;
-  margin: 20px  ;
-  max-width: max-content;
 }
 
-.why-us.text {
-  flex: 0.35;
-  min-width: 300px;
-  margin:auto
-}
-
-.why-us p {
-       display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-}
-
-.JasNavy {
-  display: flex;
-  flex: 1;
-   flex-wrap: wrap;
-  justify-content: center;
-  min-width: 300px;
-}
-
-.JasNavy img {
+.slider-container {
   width: 100%;
-  height: 500px;        
-  object-fit: cover;    
-  border-radius: 0px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-/*services*/
+.slider-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+  width: 400vw; /* karena ada 4 gambar */
+}
 
+.slider-track img {
+  width: 50vw; /* 2 gambar per layar */
+  height: 100vh;
+  object-fit: cover;
+}
+
+.slider-text button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.356);
+  border: 2px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slider-text button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s ease;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.slider-text button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.slider-text button span {
+  position: relative;
+  z-index: 1;
+}
+.slider-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* gelap transparan, bisa diubah */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.slider-text h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slider-text p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+
+/* About */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.about .text {
+  flex: 0 0 300px;
+  padding-right: 20px;
+  padding-left: 25px; /* Tambahkan padding kiri */
+}
+
+.about p {
+  margin-top: 1rem;
+}
+
+.gallery {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.gallery img {
+  width: calc(33.33% - 14px);
+  height: 450px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Experience */
+.experience {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: flex-start; /* Supaya teks di atas */
+  gap: 2rem;
+  padding: 2rem 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.experience .text {
+  padding-left: 50px; /* Tambahkan padding kiri */
+  flex: 1;
+  max-width: 500px;
+}
+
+.jahit {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start; /* Pastikan gambar juga ke atas */
+}
+
+.jahit img {
+  width: 100%;
+  max-height: 600px; /* Ganti dari 100vh ke nilai realistis */
+  object-fit: cover; /* Atur agar tetap proporsional */
+  border-radius: 0;
+}
+
+
+/* Services */
 .services {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-   flex-direction: row-reverse;
-  align-items: center;
+  flex-direction: row-reverse;
+  align-items: flex-start;
   gap: 2rem;
-  flex-wrap: wrap;
-  padding: 2rem 1rem;
-  margin: 20px  ;
-  max-width: max-content;
+  padding: 2rem;
+  width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-.services.text {
-  flex: 0.35;
-  max-width: 300px;
+.services .text {
+  flex: 0 0 300px;
+}
+
+.services p {
+  margin-top: 1rem;
+}
+
+/* Why Us */
+.why-us {
   display: flex;
-}
-
-.services.p {
-     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    unicode-bidi: isolate;
-}
-
-
-
-button {
-  padding: 10px 20px;
-  background: #ffffff;
-  color: rgb(0, 0, 0);
-  border: 1px solid #000;
-  cursor: pointer;
-}
-
-
-
-
-footer {
-  display: flex;
+  width: 100vw;
   justify-content: space-between;
-  padding: 30px 20px;
-  background: #f0f0f0;
-  flex-wrap: wrap;
+  align-items: flex-start; /* dari center menjadi flex-start */
+  gap: 2rem;
+  padding: 2rem 0;
+  margin: 0;
+  overflow: hidden;
 }
 
-footer div {
-  width: 45%;
+.why-us .text {
+  flex: 1;
+  max-width: 500px;
+  padding-left: 50px; /* Tambahkan padding kiri */
 }
 
-footer h3, footer h4 {
-  margin-bottom: 10px;
+.jas-navy {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.jas-navy img {
+  width: 100%;
+  height: auto; /* ganti dari 100vh menjadi auto */
+  max-height: 600px; /* opsional: batasi tinggi maksimal agar tidak terlalu besar */
+  object-fit: cover;
+  border-radius: 0;
 }
 
 
+/* Checklist */
 .checklist {
   list-style: none;
   padding-left: 0;
+  margin-top: 1rem;
 }
 
 .checklist li::before {
@@ -267,3 +301,229 @@ footer h3, footer h4 {
   margin-right: 0.5rem;
 }
 
+/* Button */
+button {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #000;
+  border: 1px solid #000;
+  cursor: pointer;
+  margin-top: 1rem;
+  z-index: 1;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(0, 0, 0, 0.05); /* transparan seperti air */
+  transition: transform 0.6s ease;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+button:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+button span {
+  position: relative;
+  z-index: 1;
+}
+
+/*gamba*/
+img {
+  transition: transform 0.5s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  background: #f0f0f0;
+  padding: 30px 20px;
+  height: 200px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 150px;
+}
+
+.footer-left,
+.footer-right {
+  width: 45%;
+  margin-bottom: 20px;
+  height: 150px;
+  max-width: 300px;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+nav a,
+nav span {
+  color: #000000; /* Hitam */
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+/* Flip Card */
+
+/* GALLERY FLIP STYLING */
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 350px;
+  perspective: 1000px;
+  overflow: visible;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front img,
+.flip-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.auto-flip .flip-card-inner {
+  animation: flipCardLoop 14s infinite ease-in-out;
+  transform-style: preserve-3d;
+  transition: transform 3s ease-in-out;
+}
+
+@keyframes flipCardLoop {
+  0%, 28.5% {
+    transform: rotateY(0deg); /* Diam posisi depan selama 4 detik (0-4s) */
+  }
+  50% {
+    transform: rotateY(180deg); /* Flip ke belakang selama 3 detik (4-7s) */
+  }
+  78.5%, 100% {
+    transform: rotateY(180deg); /* Diam posisi belakang selama 4 detik (7-11s) */
+  }
+  100% {
+    transform: rotateY(0deg); /* Flip balik selama 3 detik (11-14s) */
+  }
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap; /* agar tidak turun */
+  overflow-x: visible;   /* jika tidak muat, bisa geser horizontal */
+  padding: 0 20px;
+}
+
+.wa-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.wa-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.wa-float:hover {
+  transform: scale(1.1);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero,
+  .about,
+  .experience,
+  .services,
+  .why-us {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .gallery,
+  .gallery img,
+  .jas-navy img,
+  .jahit img {
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer div {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 5px 10px;
+  }
+}
