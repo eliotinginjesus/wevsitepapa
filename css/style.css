@@ -55,15 +55,24 @@ header h1 {
 }
 
 /* Navigation */
-nav {
-  margin-top: 10px;
+.navigation {
+  display: flex;
+  justify-content: center;   /* center horizontal */
+  align-items: center;       /* center vertical */
+  height: 100px;
+  background-color: #fff;
+  width: 100%;
 }
 
-nav a {
-  margin: 0 10px;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
+.nav {
+  text-align: center;
+}
+
+.nav nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center; /* tambahkan ini agar isi nav ikut center */
 }
 
 /* Hero */
@@ -698,9 +707,26 @@ nav a:hover {
   }
 
   /* Nav */
-  nav {
-    text-align: center;
-  }
+.navigation {
+  display: flex;
+  justify-content: center;   /* center horizontal */
+  align-items: center;       /* center vertical */
+  height: 100px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.nav {
+  text-align: center;
+}
+
+.nav nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center; /* tambahkan ini agar isi nav ikut center */
+}
+
 
   nav a {
     margin: 5px;
@@ -716,3 +742,11 @@ nav a:hover {
   }
 
   /* galeri dibawah*/
+
+  /*catatan pengembangan:
+  - galeri desktoip dan android dipisah
+  -masukin jenis-jenis pakaian
+  - gambar yang seragam laki-laki dimasukkan
+  rapihkan footernya
+  */
+  
