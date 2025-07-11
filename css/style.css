@@ -12,6 +12,17 @@
   box-sizing: border-box;
 }
 
+/* Sembunyikan mobile di PC, dan sebaliknya */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+
+
 h1, h2 , h3 {
   font-family: 'Rische Demo', serif;
 }
@@ -486,44 +497,222 @@ nav a:hover {
   transform: scale(1.1);
 }
 
+/* Desktop: tampilkan normal */
+.gallery.desktop-only {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
 
-/* Responsive */
+
+/* ========== RESPONSIVE MOBILE STYLES (<= 768px) ========== */
 @media (max-width: 768px) {
-  .hero,
+ 
+
+  body {
+    overflow-x: hidden;
+  }
+
+  html {
+    overflow-x: hidden;
+  }
+
+  .mobile-only {
+    -ms-overflow-style: none;     /* IE & Edge */
+    scrollbar-width: none;        /* Firefox */
+  }
+
+  .mobile-only::-webkit-scrollbar {
+    display: none;                /* Chrome, Safari, Opera */
+  }
+
+  /* Tampilkan mobile slider, sembunyikan desktop */
+  .desktop-only {
+    display: none !important;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .mobile-only {
+    display: flex !important;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .mobile-only img {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+  }
+
+  .mobile-slider {
+    -ms-overflow-style: none;  /* IE dan Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+  .mobile-slider::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Opera */
+  }
+
+  /* Hero mobile layout */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  .slider-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slider-text {
+    position: absolute;
+    padding: 20px;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slider-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .slider-text p {
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  a > button,
+  button {
+    margin: 20px auto 0 auto;
+       text-align: center;
+    text-decoration: none;
+  }
+
+  a > button,
+  button {
+    text-decoration: none;
+  }
+
+  /* Text blocks rata kiri */
+  .about .text,
+  .experience .text,
+  .services .text,
+  .why-us .text {
+    text-align: start;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* Section spacing */
+  section {
+    padding: 30px 15px;
+    margin-bottom: 40px;
+  }
+
   .about,
   .experience,
   .services,
   .why-us {
     flex-direction: column;
-    height: auto;
-    width: 100%;
+    align-items: center;
+    padding: 20px 15px;
   }
 
-  .gallery,
-  .gallery img,
-  .jas-navy img,
-  .jahit img {
-    width: 100%;
-    height: auto;
-    flex-wrap: wrap;
-  }
-
+  /* Gallery */
   .gallery {
     flex-direction: column;
     align-items: center;
-  }
-
-  footer div {
+    gap: 15px;
+    padding: 0;
     width: 100%;
-    margin-bottom: 20px;
   }
 
+  .gallery img,
+  .flip-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .flip-card {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
+
+  .jahit img,
+  .jas-navy img {
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+  }
+
+  /* Footer */
+  footer {
+    padding: 20px;
+    height: auto;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .footer-left,
+  .footer-right {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  /* Nav */
   nav {
     text-align: center;
   }
 
   nav a {
+    margin: 5px;
     display: inline-block;
-    margin: 5px 10px;
   }
-}
+/* flip*/
+.F2 {
+    display : none
+  }
+
+  .F3 {
+    display : none
+  }
+
+  /* galeri dibawah*/

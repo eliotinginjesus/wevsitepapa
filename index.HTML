@@ -23,15 +23,24 @@
     </a>
   </div>
 
-  <div class="slider-track">
-    <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
-    <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
-    <img src="https://i.imghippo.com/files/CfdR4729yxM.png" alt="Model 3" />
-    <img src="https://i.imghippo.com/files/HLa8690WU.png" alt="Model 4" />
-    <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
-    <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
-  </div>
+  <!-- Slider untuk Desktop -->
+<div class="slider-track desktop-only">
+  <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
+  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
+  <img src="https://i.imghippo.com/files/CfdR4729yxM.png" alt="Model 3" />
+  <img src="https://i.imghippo.com/files/HLa8690WU.png" alt="Model 4" />
+  <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
+  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
 </div>
+
+<!-- Slider untuk Mobile -->
+<div class="slider-track mobile-only">
+  <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
+  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
+  <img src="https://i.imghippo.com/files/CfdR4729yxM.png" alt="Model 3" />
+  <img src="https://i.imghippo.com/files/HLa8690WU.png" alt="Model 4" />
+</div>
+
 
 </section>
   <section class="nav">
@@ -52,7 +61,7 @@
          <button>Konsultasi Sekarang</button>
       </a>
     </div>
-  <div class="gallery">
+  <div class="gallery ">
       <!-- Card 1 -->
       <div class="flip-card auto-flip delay-1">
         <div class="flip-card-inner">
@@ -66,7 +75,7 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="flip-card auto-flip delay-2">
+      <div class="F2 flip-card auto-flip delay-2">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="https://i.imghippo.com/files/yJma5378FNw.png" alt="Jas Custom 2" />
@@ -78,7 +87,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="flip-card auto-flip delay-3">
+      <div class="F3 flip-card auto-flip delay-3">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <img src="https://i.imghippo.com/files/HeSp6974Cw.png" alt="Jas Custom 3" />
@@ -89,7 +98,9 @@
         </div>
       </div>
     </div>
-  </section>
+   </section>
+  
+
 
   <section class="experience">
     <div class="text">
@@ -117,11 +128,12 @@
          <button>Konsultasi Sekarang</button>
       </a>
     </div>
-    <div class="gallery">
-      <img src="https://i.imghippo.com/files/amQ6774Y.png" />
-      <img src="https://i.imghippo.com/files/yFJI2297MBs.png" />
-      <img src="https://i.imghippo.com/files/UsZ8964kg.png" />
-    </div>
+   <div class="gallery">
+  <img src="https://i.imghippo.com/files/amQ6774Y.png" alt="Gambar 1" />
+  <img class="hide-on-mobile" src="https://i.imghippo.com/files/yFJI2297MBs.png" alt="Gambar 2" />
+  <img class="hide-on-mobile" src="https://i.imghippo.com/files/UsZ8964kg.png" alt="Gambar 3" />
+</div>
+
   </section>
 
   <section class="why-us">
@@ -165,28 +177,55 @@
 <script>
   const track = document.querySelector(".slider-track");
   const images = document.querySelectorAll(".slider-track img");
-  const imageCount = images.length; // Sekarang jadi 5 karena ada 1 duplikat
+  const imageCount = images.length;
   let index = 0;
 
-  const slideWidth = 50; // 50vw per gambar (2 gambar = 100vw)
+  // Deteksi apakah sedang mobile atau tidak
+  let slideWidth = window.innerWidth <= 768 ? 100 : 50;
+
+  // Update slideWidth saat resize (opsional tapi recommended)
+  window.addEventListener("resize", () => {
+    slideWidth = window.innerWidth <= 768 ? 100 : 50;
+  });
 
   function slideImages() {
     index++;
     track.style.transition = "transform 1.5s ease-in-out";
     track.style.transform = `translateX(-${index * slideWidth}vw)`;
 
-    // Jika sampai ke duplikat gambar pertama
+    // Reset ke awal jika sampai duplikat terakhir
     if (index === imageCount - 2) {
       setTimeout(() => {
         track.style.transition = "none";
-        track.style.transform = `translateX(-${0 * slideWidth}vw)`;
+        track.style.transform = `translateX(0vw)`;
         index = 0;
-      }, 1500); // sesuai durasi transisi
+      }, 1500);
     }
   }
 
-  setInterval(slideImages, 4000); // geser setiap 4 detik
+  setInterval(slideImages, 4000);
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mobileSlider = document.querySelector('.mobile-only');
+    if (!mobileSlider) return;
+
+    let currentIndex = 0;
+    const images = mobileSlider.querySelectorAll('img');
+    const totalImages = images.length;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalImages;
+      mobileSlider.scrollTo({
+        left: mobileSlider.offsetWidth * currentIndex,
+        behavior: 'smooth'
+      });
+    }, 4000); // 4 detik antar slide
+  });
+</script>
+
+
 
 <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" 
    class="wa-float" 
