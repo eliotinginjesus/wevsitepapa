@@ -8,6 +8,10 @@
   <!-- Ini adalah komentar -->
   <link rel="icon" type="image/png" href="https://i.imghippo.com/files/faviconmu.png" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+ <link rel="preload" href="https://i.imghippo.com/files/jpe8007WLE.png" as="image">
+  <link rel="preload" href="https://i.imghippo.com/files/mDez5013ukI.png" as="image">
+  <link rel="preload" href="https://i.imghippo.com/files/CfdR4729yxM.png" as="image">
+  <link rel="preload" href="https://i.imghippo.com/files/HLa8690WU.png" as="image">
 </head>
 <body>
   <header>
@@ -25,20 +29,19 @@
 
   <!-- Slider untuk Desktop -->
 <div class="slider-track desktop-only">
-  <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
-  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
-  <img src="https://i.imghippo.com/files/CfdR4729yxM.png" alt="Model 3" />
-  <img src="https://i.imghippo.com/files/HLa8690WU.png" alt="Model 4" />
-  <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
-  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
+    <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Slide 1" loading="eager">
+  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Slide 2" loading="eager">
+  <img src="https://i.imghippo.com/files/CfdR4729yxM.png" alt="Slide 3" loading="eager">
+  <img src="https://i.imghippo.com/files/HLa8690WU.png" alt="Slide 4" loading="eager">
+
 </div>
 
 <!-- Slider untuk Mobile -->
 <div class="slider-track mobile-only">
-  <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Model 1" />
-  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Model 2" />
-  <img src="https://i.imghippo.com/files/CfdR4729yxM.png" alt="Model 3" />
-  <img src="https://i.imghippo.com/files/HLa8690WU.png" alt="Model 4" />
+    <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Slide 1" loading="eager">
+  <img src="https://i.imghippo.com/files/mDez5013ukI.png" alt="Slide 2" loading="eager">
+  <img src="https://i.imghippo.com/files/CfdR4729yxM.png" alt="Slide 3" loading="eager">
+  <img src="https://i.imghippo.com/files/HLa8690WU.png" alt="Slide 4" loading="eager">
 </div>
  </section>
 
@@ -177,35 +180,50 @@
 
    <script src="Js\script.js"></script>
 <script>
-  const track = document.querySelector(".slider-track");
-  const images = document.querySelectorAll(".slider-track img");
-  const imageCount = images.length;
-  let index = 0;
+ const slider = document.querySelector('.slider-track.desktop-only'); // desktop
+const slides = Array.from(slider.children);
+const slideCount = slides.length;
 
-  // Deteksi apakah sedang mobile atau tidak
-  let slideWidth = window.innerWidth <= 768 ? 100 : 50;
+// Clone pertama & terakhir untuk looping
+const firstClone = slides[0].cloneNode(true);
+const lastClone = slides[slides.length - 1].cloneNode(true);
+slider.appendChild(firstClone);
+slider.insertBefore(lastClone, slides[0]);
 
-  // Update slideWidth saat resize (opsional tapi recommended)
-  window.addEventListener("resize", () => {
-    slideWidth = window.innerWidth <= 768 ? 100 : 50;
-  });
+let index = 1;
+let slideWidth = slides[0].getBoundingClientRect().width;
 
-  function slideImages() {
-    index++;
-    track.style.transition = "transform 1.5s ease-in-out";
-    track.style.transform = `translateX(-${index * slideWidth}vw)`;
+slider.style.transform = `translateX(-${slideWidth * index}px)`;
+slider.style.transition = 'transform 0.7s ease-in-out';
 
-    // Reset ke awal jika sampai duplikat terakhir
-    if (index === imageCount - 2) {
-      setTimeout(() => {
-        track.style.transition = "none";
-        track.style.transform = `translateX(0vw)`;
-        index = 0;
-      }, 1500);
-    }
+function nextSlide() {
+  index++;
+  slider.style.transition = 'transform 0.7s ease-in-out';
+  slider.style.transform = `translateX(-${slideWidth * index}px)`;
+}
+
+slider.addEventListener('transitionend', () => {
+  if (slider.children[index] === firstClone) {
+    slider.style.transition = 'none';
+    index = 1;
+    slider.style.transform = `translateX(-${slideWidth * index}px)`;
   }
+  if (slider.children[index] === lastClone) {
+    slider.style.transition = 'none';
+    index = slideCount;
+    slider.style.transform = `translateX(-${slideWidth * index}px)`;
+  }
+});
 
-  setInterval(slideImages, 4000);
+setInterval(nextSlide, 4000);
+
+window.addEventListener('resize', () => {
+  slideWidth = slides[0].getBoundingClientRect().width;
+  slider.style.transition = 'none';
+  slider.style.transform = `translateX(-${slideWidth * index}px)`;
+});
+
+
 </script>
 
 <script>
@@ -213,18 +231,30 @@
     const mobileSlider = document.querySelector('.mobile-only');
     if (!mobileSlider) return;
 
-    let currentIndex = 0;
     const images = mobileSlider.querySelectorAll('img');
     const totalImages = images.length;
 
+    // Duplikat slide pertama di akhir
+    const firstClone = images[0].cloneNode(true);
+    mobileSlider.appendChild(firstClone);
+
+    let currentIndex = 0;
+
     setInterval(() => {
-      currentIndex = (currentIndex + 1) % totalImages;
-      mobileSlider.scrollTo({
-        left: mobileSlider.offsetWidth * currentIndex,
-        behavior: 'smooth'
-      });
-    }, 4000); // 4 detik antar slide
-  });
+        currentIndex++;
+        mobileSlider.scrollTo({
+            left: mobileSlider.offsetWidth * currentIndex,
+            behavior: 'smooth'
+        });
+
+        // Jika sampai duplikat slide terakhir
+        if (currentIndex === totalImages) {
+            setTimeout(() => {
+                mobileSlider.scrollTo({ left: 0, behavior: 'auto' });
+                currentIndex = 0;
+            }, 500); // delay sebentar biar animasi smooth selesai
+        }
+    }, 4000);});
 </script>
 
 
