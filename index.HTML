@@ -8,7 +8,7 @@
   <!-- Ini adalah komentar -->
   <link rel="icon" type="image/png" href="https://i.imghippo.com/files/faviconmu.png" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
- <link rel="preload" href="https://i.imghippo.com/files/jpe8007WLE.png" as="image">
+  <link rel="preload" href="https://i.imghippo.com/files/jpe8007WLE.png" as="image">
   <link rel="preload" href="https://i.imghippo.com/files/mDez5013ukI.png" as="image">
   <link rel="preload" href="https://i.imghippo.com/files/CfdR4729yxM.png" as="image">
   <link rel="preload" href="https://i.imghippo.com/files/HLa8690WU.png" as="image">
@@ -31,20 +31,30 @@
 </head>
 <body>
   <header>
-     <div class="header-left desktop-only">
-        <a href="#">Artikel</a>
-        <a href="#">Produk</a>
-        <a href="#">Wanita</a>
-        <a href="#">Pria</a>
+    <div class="header-left desktop-only">
+      <a href="#">Artikel</a>
+      <a href="#">Produk</a>
+      <a href="#">Wanita</a>
+      <a href="#">Pria</a>
     </div>
     <div class="header-center">
-        <h1>PENJAHIT TJI PHIN</h1>
+      <h1>PENJAHIT TJI PHIN</h1>
     </div>
     <div class="header-right">
-        <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank" class="cta-button desktop-only">Konsultasi Sekarang</a>
-        <button class="hamburger" aria-label="Menu">☰</button>
+      <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank" class="cta-button desktop-only">Konsultasi Sekarang</a>
+      <button class="hamburger" aria-label="Menu">☰</button>
     </div>
   </header>
+  
+  <!-- Mobile Navigation Menu -->
+  <nav id="mobile-menu" class="mobile-nav">
+    <a href="#">Artikel</a>
+    <a href="#">Produk</a>
+    <a href="#">Wanita</a>
+    <a href="#">Pria</a>
+    <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank" class="cta-button-mobile">Konsultasi Sekarang</a>
+  </nav>
+
 <section class="hero">
  <div class="slider-container">
   <div class="slider-text">
@@ -91,7 +101,7 @@
         Penjahit Tji Phin adalah mitra andal Anda dalam penyediaan pakaian kantor dan seragam sekolah yang profesional. Kami berkomitmen menghadirkan hasil jahitan yang rapi, bahan yang nyaman dipakai, dan ketepatan waktu dalam setiap proyek.
       </p>
         <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank">
-         <button>Konsultasi Sekarang</button>
+          <button>Konsultasi Sekarang</button>
       </a>
     </div>
   <div class="gallery ">
@@ -132,7 +142,7 @@
       </div>
     </div>
    </section>
-  
+ 
 
 
   <section class="experience">
@@ -142,7 +152,7 @@
         Didukung oleh lebih dari <strong>20 tahun</strong> pengalaman, kami telah dipercaya berbagai sekolah, kantor, dan institusi untuk menjahit seragam berkualitas tinggi. Mulai dari seragam siswa, guru, staf kantor, hingga pakaian dinas.
       </p>
       <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank">
-         <button>Konsultasi Sekarang</button>
+          <button>Konsultasi Sekarang</button>
       </a>
     </div>
     <div class="jahit">
@@ -158,7 +168,7 @@
         <li><strong>Pakaian & Seragam Kantor</strong>: <br> Kemeja, blazer, celana formal, <br>seragam kerja profesional.</li>
       </ul>
         <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank">
-         <button>Konsultasi Sekarang</button>
+          <button>Konsultasi Sekarang</button>
       </a>
     </div>
    <div class="gallery">
@@ -180,7 +190,7 @@
         <li>Layanan konsultasi desain & pengukuran</li>
       </ul>
         <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank">
-         <button>Konsultasi Sekarang</button>
+          <button>Konsultasi Sekarang</button>
       </a>
     </div>
     <div class="jas-navy">
@@ -206,74 +216,76 @@
   </div>
 </footer>
 
-   <script src="Js\script.js"></script>
-   <script>
- // Hamburger Menu Logic
-  const hamburgerBtn = document.getElementById('hamburger-btn');
+    <script>
+   // Hamburger Menu Logic
+  const hamburgerBtn = document.querySelector('.hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   if (hamburgerBtn && mobileMenu) {
     hamburgerBtn.addEventListener('click', () => {
+      // Toggle icon between hamburger and close (X)
+      hamburgerBtn.textContent = hamburgerBtn.textContent.includes('☰') ? '✕' : '☰';
       mobileMenu.classList.toggle('open');
     });
   }
 
-</script>
-<script>
- const slider = document.querySelector('.slider-track.desktop-only'); // desktop
-const slides = Array.from(slider.children);
-const slideCount = slides.length;
 
-// Clone pertama & terakhir untuk looping
-const firstClone = slides[0].cloneNode(true);
-const lastClone = slides[slides.length - 1].cloneNode(true);
-slider.appendChild(firstClone);
-slider.insertBefore(lastClone, slides[0]);
+  // Desktop Slider
+  const slider = document.querySelector('.slider-track.desktop-only');
+  if (slider) {
+      const slides = Array.from(slider.children);
+      const slideCount = slides.length;
 
-let index = 1;
-let slideWidth = slides[0].getBoundingClientRect().width;
+      // Clone first & last for looping
+      const firstClone = slides[0].cloneNode(true);
+      const lastClone = slides[slides.length - 1].cloneNode(true);
+      slider.appendChild(firstClone);
+      slider.insertBefore(lastClone, slides[0]);
 
-slider.style.transform = `translateX(-${slideWidth * index}px)`;
-slider.style.transition = 'transform 0.7s ease-in-out';
+      let index = 1;
+      let slideWidth = slides[0].getBoundingClientRect().width;
 
-function nextSlide() {
-  index++;
-  slider.style.transition = 'transform 0.7s ease-in-out';
-  slider.style.transform = `translateX(-${slideWidth * index}px)`;
-}
+      slider.style.transform = `translateX(-${slideWidth * index}px)`;
+      slider.style.transition = 'transform 0.7s ease-in-out';
 
-slider.addEventListener('transitionend', () => {
-  if (slider.children[index] === firstClone) {
-    slider.style.transition = 'none';
-    index = 1;
-    slider.style.transform = `translateX(-${slideWidth * index}px)`;
+      function nextSlide() {
+        index++;
+        slider.style.transition = 'transform 0.7s ease-in-out';
+        slider.style.transform = `translateX(-${slideWidth * index}px)`;
+      }
+
+      slider.addEventListener('transitionend', () => {
+        const currentSlides = slider.children;
+        if (currentSlides[index] === firstClone) {
+          slider.style.transition = 'none';
+          index = 1;
+          slider.style.transform = `translateX(-${slideWidth * index}px)`;
+        }
+        if (currentSlides[index] === lastClone) {
+          slider.style.transition = 'none';
+          index = slideCount;
+          slider.style.transform = `translateX(-${slideWidth * index}px)`;
+        }
+      });
+
+      setInterval(nextSlide, 4000);
+
+      window.addEventListener('resize', () => {
+        slideWidth = slides[0].getBoundingClientRect().width;
+        slider.style.transition = 'none';
+        slider.style.transform = `translateX(-${slideWidth * index}px)`;
+      });
   }
-  if (slider.children[index] === lastClone) {
-    slider.style.transition = 'none';
-    index = slideCount;
-    slider.style.transform = `translateX(-${slideWidth * index}px)`;
-  }
-});
 
-setInterval(nextSlide, 4000);
-
-window.addEventListener('resize', () => {
-  slideWidth = slides[0].getBoundingClientRect().width;
-  slider.style.transition = 'none';
-  slider.style.transform = `translateX(-${slideWidth * index}px)`;
-});
-
-
-</script>
-
-<script>
+  // Mobile Slider
   document.addEventListener('DOMContentLoaded', function () {
     const mobileSlider = document.querySelector('.mobile-only');
     if (!mobileSlider) return;
 
     const images = mobileSlider.querySelectorAll('img');
+    if (images.length === 0) return;
     const totalImages = images.length;
 
-    // Duplikat slide pertama di akhir
+    // Duplicate first slide at the end
     const firstClone = images[0].cloneNode(true);
     mobileSlider.appendChild(firstClone);
 
@@ -286,17 +298,16 @@ window.addEventListener('resize', () => {
             behavior: 'smooth'
         });
 
-        // Jika sampai duplikat slide terakhir
+        // If it's the last clone, reset without animation
         if (currentIndex === totalImages) {
             setTimeout(() => {
                 mobileSlider.scrollTo({ left: 0, behavior: 'auto' });
                 currentIndex = 0;
-            }, 500); // delay sebentar biar animasi smooth selesai
+            }, 700); // delay to match smooth animation duration
         }
-    }, 4000);});
+    }, 4000);
+  });
 </script>
-
-
 
 <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" 
    class="wa-float" 
