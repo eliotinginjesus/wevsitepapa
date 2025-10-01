@@ -31,7 +31,19 @@
 </head>
 <body>
   <header>
-    <h1>PENJAHIT TJI PHIN</h1>
+     <div class="header-left desktop-only">
+        <a href="#">Artikel</a>
+        <a href="#">Produk</a>
+        <a href="#">Wanita</a>
+        <a href="#">Pria</a>
+    </div>
+    <div class="header-center">
+        <h1>PENJAHIT TJI PHIN</h1>
+    </div>
+    <div class="header-right">
+        <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank" class="cta-button desktop-only">Konsultasi Sekarang</a>
+        <button class="hamburger" aria-label="Menu">☰</button>
+    </div>
   </header>
 <section class="hero">
  <div class="slider-container">
@@ -195,6 +207,17 @@
 </footer>
 
    <script src="Js\script.js"></script>
+   <script>
+ // Hamburger Menu Logic
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+  }
+
+</script>
 <script>
  const slider = document.querySelector('.slider-track.desktop-only'); // desktop
 const slides = Array.from(slider.children);
