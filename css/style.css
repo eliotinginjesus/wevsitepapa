@@ -26,6 +26,17 @@ h1, h2, h3 {
 }
 
 
+/* Targetkan semua link (a) di dalam section spesifik 
+  yang berisi tombol agar tidak memiliki garis bawah.
+*/
+.hero a,
+.about a,
+.experience a,
+.services a,
+.why-us a {
+  text-decoration: none;
+}
+
 body {
   font-family: 'Open sans', serif;
   line-height: 1.6;
@@ -74,7 +85,7 @@ header {
 header h1 {
   font-size: 24px;
   letter-spacing: 1px;
-  margin: 0;
+  margin-left: 50px;
 }
 
 header a {
@@ -118,7 +129,7 @@ header a {
   top: 85px; /* Adjust based on header height */
   left: 0;
   width: 100%;
-  padding: 30px 0;
+  padding: 30px 0px;
   transform: translateY(-150%);
   transition: transform 0.4s ease-in-out;
   z-index: 1000;
@@ -133,7 +144,7 @@ header a {
   text-decoration: none;
   color: #111;
   font-size: 18px;
-  padding: 5px 0;
+  padding: 5px 20px;
 }
 
 .cta-button-mobile {
@@ -325,9 +336,9 @@ header a {
 }
 
 .experience .text {
-  padding-left: 50px; /* Tambahkan padding kiri */
   flex: 1;
   max-width: 500px;
+  padding: 50px;
 }
 
 .jahit {
@@ -382,7 +393,7 @@ header a {
 .why-us .text {
   flex: 1;
   max-width: 500px;
-  padding-left: 50px; /* Tambahkan padding kiri */
+  padding: 50px; /* Tambahkan padding kiri */
 }
 
 .jas-navy {
@@ -740,15 +751,35 @@ nav a:hover {
     text-decoration: none;
   }
 
-  /* Text blocks rata kiri */
-  .about .text,
-  .experience .text,
-  .services .text,
-  .why-us .text {
-    text-align: start;
-    padding: 0;
-    max-width: 100%;
+
+  /* Hapus style lama yang membuat tombol full-width */
+  .cta-button-mobile,
+  .hero button,
+  .about button,
+  .experience button,
+  .services button,
+  .why-us button {
+    width: auto;
+    display: inline-block;
+    border-radius: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
+
+  /* Terapkan trik centering langsung pada link pembungkus tombol */
+  .hero a,
+  .about a,
+  .experience a,
+  .services a,
+  .why-us a {
+    display: block;        /* 1. Jadikan link sebagai elemen block */
+    width: fit-content;    /* 2. Buat lebar block pas dengan isi (tombolnya) */
+    margin-left: auto;     /* 3. Atur margin kiri dan kanan agar otomatis di tengah */
+    margin-right: auto;
+    margin-top: 15px;      /* (Opsional) Beri sedikit jarak atas */
+    margin-bottom: 15px;   /* (Opsional) Beri sedikit jarak bawah */
+  }
+
 
   /* Section spacing */
   section {
