@@ -26,10 +26,12 @@ h1, h2, h3 {
   font-family: 'Rische Demo', serif;
 }
 
-section {
+section:not(.navigation)(.hero) {
   padding: 40px 20px;
   margin-bottom: 60px;
 }
+
+
 
 .desktop-only {
   display: block;
@@ -114,6 +116,7 @@ header a {
   cursor: pointer;
   z-index: 1002;
   color: #111;
+  margin-top:0 ;
 }
 
 .mobile-nav {
@@ -159,10 +162,14 @@ header a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 20px;
   background-color: #fff;
   width: 100%;
+      margin: 0;
+    padding: 40px;
+    box-sizing: border-box;
 }
+
 
 .nav {
   text-align: center;
@@ -195,6 +202,10 @@ nav a:hover {
   height: 100vh;
   overflow: hidden;
   padding: 0;
+}
+
+.hero img {
+  border-radius: 0;
 }
 
 .slider-container {
@@ -273,8 +284,9 @@ nav a:hover {
 }
 
 .about .text {
-  flex: 0 0 400px;
-  padding: 0 20px 0 25px;
+  flex: 1;
+  max-width: 500px;
+  padding: 50px;
 }
 
 .about p {
@@ -284,8 +296,8 @@ nav a:hover {
 .gallery1, .gallery2 {
   flex: 1;
   display: flex;
-  gap: 20px;
-  justify-content: space-between;
+  gap: 15px; /* Jarak antar gambar diperkecil */
+  justify-content: center; /* Posisi galeri di tengah */
   padding: 0;
 }
 
@@ -293,7 +305,6 @@ nav a:hover {
   width: calc(33.33% - 14px);
   height: 450px;
   object-fit: cover;
-  border-radius: 0;
 }
 
 /* ====== Experience Section ====== */
@@ -330,7 +341,6 @@ nav a:hover {
   width: 100%;
   max-height: 600px;
   object-fit: cover;
-  border-radius: 0;
 }
 
 /* ====== Services Section ====== */
@@ -384,7 +394,6 @@ nav a:hover {
   height: auto;
   max-height: 600px;
   object-fit: cover;
-  border-radius: 0;
 }
 
 /* ====== General Components (Checklist, Button, Image Hover) ====== */
@@ -438,6 +447,7 @@ button span {
 
 img {
   transition: transform 0.5s ease;
+  border-radius: 0px; /* Memberi radius pada semua gambar */
 }
 
 img:hover {
@@ -447,8 +457,8 @@ img:hover {
 /* ====== Flip Card Style ====== */
 .flip-card {
   background-color: transparent;
-  width: 250px;
-  height: 350px;
+  width: 280px; /* Gambar diperbesar */
+  height: 390px; /* Gambar diperbesar */
   perspective: 1000px;
   margin: 0 auto;
 }
@@ -475,7 +485,7 @@ img:hover {
   -webkit-backface-visibility: hidden;
   top: 0;
   left: 0;
-  border-radius: 10px;
+  border-radius: 0px;
   overflow: hidden;
 }
 
@@ -484,6 +494,7 @@ img:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 0; /* Radius diatur oleh container-nya */
 }
 
 .flip-card-back {
@@ -616,7 +627,7 @@ footer {
 
   /* Header mobile */
   header {
-    padding: 20px;
+    padding: 20px 50px;
   }
 
   .header-left, .header-right .desktop-only {
@@ -630,6 +641,7 @@ footer {
   
   .header-right {
     flex: 0;
+
   }
 
   .hamburger {
@@ -671,9 +683,9 @@ footer {
   }
 
   /* Section mobile */
-  section {
-    padding: 30px 15px;
-    margin-bottom: 80px; /* Menambah jarak antar section secara signifikan */
+  section:not(.navigation)(.hero)(.header-right) {
+    padding: 30px 50px;
+    margin-bottom: 50px;
   }
 
   .about,
@@ -682,10 +694,10 @@ footer {
   .why-us {
     flex-direction: column-reverse; /* Gambar di atas teks */
     align-items: center;
-    padding: 20px 15px;
+    padding: 40px; /* Padding diatur oleh 'section' */
     height: auto;
-    gap: 1rem; /* Mengurangi jarak antara teks dan gambar */
-    min-height: 0; /* Memastikan tinggi desktop tidak memengaruhi mobile */
+    gap: 1rem; 
+    min-height: 0; 
   }
   
   .services {
@@ -698,7 +710,8 @@ footer {
   .services .text,
   .why-us .text {
     padding: 0;
-    text-align: left; /* PERBAIKAN: Teks rata kiri */
+    text-align: left; 
+    width: 100%; /* Memastikan blok teks mengisi ruang */
   }
 
   /* Tombol di tengah */
@@ -731,7 +744,6 @@ footer {
 
   .services .gallery2 img {
     width: 100%;
-    max-width: 350px;
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -739,8 +751,8 @@ footer {
 
   .flip-card {
     width: 100%;
-    max-width: 350px;
-    height: 350px;
+    height: auto;
+    aspect-ratio: 1 / 1;
     margin: 0 auto;
   }
 
@@ -751,14 +763,15 @@ footer {
   }
   
   .jahit img, .jas-navy img {
-    max-width: 100%;
+    width: 100%;
     max-height: 400px;
     height: auto;
+    object-fit: cover;
   }
 
   /* Footer mobile */
   footer {
-    padding: 20px;
+    padding: 20px 50px;
     height: auto;
   }
 
