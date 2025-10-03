@@ -579,8 +579,14 @@ body {
     }
 
     .footer-left,
-    .footer-right {
+    .footer-right{
       width: 45%;
+      margin-bottom: 20px;
+      height: auto;
+      max-width: 300px;
+    }
+
+    .footer-mid {
       margin-bottom: 20px;
       height: auto;
       max-width: 300px;
@@ -807,7 +813,6 @@ body {
 
       /* Footer mobile */
       footer {
-        padding: 20px 50px;
         height: auto;
       }
 
