@@ -552,6 +552,57 @@ footer {
   color: #555;
 }
 
+/* ========== TABLET STYLES (769px - 1024px) ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about,
+  .experience,
+  .services,
+  .why-us {
+    min-height: auto;
+    padding: 4rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .about .text,
+  .experience .text,
+  .services .text,
+  .why-us .text {
+    flex-basis: 45%;
+    max-width: none;
+    padding: 1rem;
+  }
+
+  .gallery1,
+  .jahit,
+  .gallery2,
+  .jas-navy {
+    flex-basis: 50%;
+  }
+
+  .gallery1 {
+    justify-content: center;
+  }
+
+  .gallery1 .flip-card:last-child {
+    display: none;
+  }
+
+  .flip-card {
+      width: 220px;
+      height: 310px;
+  }
+
+  .gallery2 img:last-child {
+    display: none;
+  }
+  
+  .gallery2 img {
+      width: calc(50% - 10px);
+      height: auto;
+  }
+}
+
+
 /* ========== RESPONSIVE MOBILE STYLES (<= 768px) ========== */
 @media (max-width: 768px) {
 
@@ -629,7 +680,7 @@ footer {
   .experience,
   .services,
   .why-us {
-    flex-direction: column-reverse; /* PERBAIKAN: Gambar di atas teks */
+    flex-direction: column-reverse; /* Gambar di atas teks */
     align-items: center;
     padding: 20px 15px;
     height: auto;
@@ -647,7 +698,7 @@ footer {
   .services .text,
   .why-us .text {
     padding: 0;
-    text-align: center;
+    text-align: left; /* PERBAIKAN: Teks rata kiri */
   }
 
   /* Tombol di tengah */
