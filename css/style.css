@@ -578,7 +578,7 @@ footer {
   .experience .text,
   .services .text,
   .why-us .text {
-    flex-basis: 45%;
+    flex: 1;
     max-width: none;
     padding: 1rem;
   }
