@@ -1,0 +1,419 @@
+/* General Styles */
+@font-face {
+  font-family: 'Rische Demo';
+  src: url('../fonts/rische-demo.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1, h2 , h3 {
+  font-family: 'Rische Demo', serif;
+}
+h2 {font-size: xx-large;}
+
+body {
+  font-family: 'Open sans', serif;
+  line-height: 1.6;
+  color: #111;
+  background: #fdfdfd;
+  height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    overflow-x: hidden;
+}
+
+section {
+    padding: 40px 50px;
+    margin-bottom: 0; /* Remove default margin */
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+a { text-decoration: none; color: inherit; }
+
+/* Header */
+ header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: #f6f6f6;
+  border-bottom: 1px solid #ddd;
+  z-index: 2000; /* Naikkan supaya paling atas */
+}
+
+    .header-left, .header-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-left {
+      justify-content: flex-start;
+      gap: 25px;
+    }
+
+    .header-right {
+      justify-content: flex-end;
+    }
+
+    .header-center {
+      flex: 2;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      letter-spacing: 1px;
+      margin-left: 50px;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #111;
+      font-size: 14px;
+    }
+.cta-button {
+    border: 1px solid #000;
+    padding: 8px 16px;
+    color: #000;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s;
+}
+.cta-button:hover { /* This is now mainly for triggering the pseudo-element */ }
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #e0e0e0; /* Light grey fluid color */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s ease-out;
+    z-index: -1;
+}
+
+.cta-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Mobile Navigation */
+.hamburger { display: none; font-size: 28px; background: none; border: none; cursor: pointer; }
+.mobile-nav {
+    position: fixed; top: 0; left: 0; height: 100vh; width: 100%;
+    background-color: #fdfdfd;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 25px; transform: translateY(-100%); transition: transform 0.4s ease-in-out;
+    z-index: 1999;
+}
+.mobile-nav.open { transform: translateY(0); }
+.mobile-nav a { font-size: 18px; padding: 5px 20px; }
+.cta-button-mobile {
+    border: 1px solid #000; padding: 10px 25px; margin-top: 10px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-button-mobile::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #e0e0e0; /* Light grey fluid color */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s ease-out;
+    z-index: -1;
+}
+
+.cta-button-mobile:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Hero Section for Wedding Page */
+.hero-wedding {
+    padding: 0;
+    margin-top: 80px; /* Offset for fixed header */
+    height: calc(100vh - 85px);
+    min-height: 600px;
+    background: url('https://i.imghippo.com/files/DEgX4705Ru.png') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+}
+.hero-wedding .container {
+    background: transparent; /* Made container transparent again */
+    padding: 40px;
+    max-width: 700px;
+    margin-left: 50px;
+}
+.hero-wedding h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    color: #111; /* Black text */
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.7); /* Added light shadow for readability */
+}
+.hero-wedding p {
+    margin: 1rem 0;
+    text-align: justify;
+    color: #111; /* Black text */
+    text-shadow: 1px 1px 3px rgba(255,255,255,0.7); /* Added light shadow for readability */
+}
+.hero-wedding .cta-button {
+    margin-top: 1rem;
+    display: inline-block;
+    border-color: #000;
+    color: #000;
+}
+.hero-wedding .cta-button::before {
+     background-color: #e0e0e0; /* Back to light grey fluid color */
+}
+
+/* Intro Section & Gallery Grid */
+.intro-text { text-align: center; padding-bottom: 0; }
+.intro-text h1 { font-size: 2.5rem; }
+.intro-text p { max-width: 800px; margin: 1rem auto 0; color: #555; text-align: justify; }
+
+.gallery-grid { padding-top: 10px; padding-bottom: 60px; }
+.gallery-grid .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 3rem;
+}
+.gallery-grid .grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 3 / 4;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.gallery-grid .grid-item img:hover {
+    transform: scale(1.03);
+}
+.gallery-grid .grid-item h3 { margin-top: 1rem; font-size: 1.5rem; }
+.gallery-grid .grid-item p { margin-top: 0.5rem; color: #555; text-align: justify; }
+
+/* Experience & Why Us Sections */
+.experience, .why-us {
+      display: flex;
+   align-items: center;
+ overflow: hidden; padding-top: 60px; padding-bottom: 60px;
+}
+.experience { 
+    background: #F8F5F2; /* Beige background */
+    padding-bottom: 0; /* Make image flush with the bottom */
+}
+
+    .experience .text {
+      flex: 1;
+      max-width: 700px;
+      padding: 50px;
+      margin-left: 100px;
+    }
+
+    .experience p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    
+    .why-us {
+      padding-left: 0px;
+
+    }
+
+    .why-us .text {
+      flex: 1;
+      max-width: 700px;
+      padding: 50px;
+      margin-left: 100px;
+    }
+
+.experience .image, .why-us .image { flex: 1; display: flex;}
+.experience .image { justify-content: flex-end; margin-right: 100px;  }
+
+
+
+.why-us .image { justify-content: flex-start; }
+.experience .image img, .why-us .image img { width: 100%;
+    max-width: 700px;
+    height: auto; object-fit: cover; }
+
+.experience .cta-button,
+.why-us .cta-button {
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
+.checklist { list-style: none; padding-left: 0; margin-top: 1rem; }
+.checklist li { display: flex; align-items: flex-start; margin-bottom: 0.75rem; font-size: 1.1rem; }
+.checklist li::before { content: '✓'; color: #111; font-weight: bold; margin-right: 0.75rem; }
+
+/* Footer */
+ footer {
+      background: #f0f0f0;
+      padding:0px;
+      height: auto;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      height: auto;
+      padding: 50px;
+    }
+
+    .footer-left,
+    .footer-right{
+      width: 45%;
+      margin-bottom: 20px;
+      height: auto;
+      max-width: 300px;
+    }
+
+    .footer-mid {
+      margin-bottom: 20px;
+      height: auto;
+      max-width: 300px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #000000;
+      background-color: #ABABAB;
+      padding: 10px;
+    }
+    .footer-middle {
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      padding: 40px;
+    }
+     nav a,
+    nav span {
+      color: #000000;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+/* WA Float Button */
+.wa-float { position: fixed; bottom: 20px; right: 20px; z-index: 999; width: 60px; height: 60px; }
+.wa-float img { width: 100%; height: 100%; }
+
+/* Responsive */
+@media (max-width: 768px) {
+     .desktop-only { display: none !important; }
+    .mobile-only { display: flex !important; }
+
+    .desktop-only {
+        display: none !important;
+      }
+
+      .mobile-only {
+        display: flex !important;
+      }
+
+      /* Header mobile */
+      header {
+        padding: 20px 50px;
+      }
+
+      .header-left, .header-right .desktop-only {
+        display: none;
+      }
+
+      .header-center {
+        flex: 1;
+        text-align: left;
+      }
+      
+      .header-right {
+        flex: 0;
+
+      }
+    .hamburger { display: block; }
+    section { padding: 30px 20px; }
+
+    .hero-wedding { margin-top: 68px; height: auto; padding: 40px 0;  background-position: 80% 30%; /* horizontal 50%, vertical 30% */
+  background-size: cover; }
+     .hero-wedding .container { 
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        max-width: 100%; 
+        padding: 20px; 
+        padding-top: 100px; 
+        background: linear-gradient(to bottom, rgba(248, 245, 242, 0) 0%, #F8F5F2 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 0px;
+        }
+    .hero-wedding h1 { font-size: 1.6rem; }
+
+    .intro-text h2 { font-size: 1.6rem; }
+
+    .gallery-grid .grid-container { grid-template-columns: 1fr; }
+    
+    .experience, .why-us { flex-direction: column; }
+    .why-us { flex-direction: column-reverse; padding-left: 20px;}
+    .experience .text, .why-us .text { 
+        max-width: 100%; 
+        padding: 20px 0;
+        margin-left: 0;
+        text-align: center; /* Center buttons */
+    }
+    .experience .text p, .why-us .text p, .intro-text p, .gallery-grid .grid-item p {
+        text-align: left; /* Keep paragraph text left aligned for readability */
+    }
+    .experience .image, .why-us .image {
+        margin: 0;
+        width: 100%;
+    }
+    
+    footer .footer-top {
+        flex-direction: column;
+        gap: 20px;
+        padding: 30px 20px;
+    }
+    footer .footer-left,
+    footer .footer-mid,
+    footer .footer-right { 
+        width: 100%;
+        max-width: none;
+    }
+    footer .footer-middle { margin: 0 20px; }
+}
+
