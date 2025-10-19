@@ -1,0 +1,89 @@
+body {
+    padding-top: 80px; /* Memberi ruang untuk header fixed */
+}
+.location-hero {
+    height: 50vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.imghippo.com/files/kJWh3063odo.png'); /* Gambar placeholder, ganti dengan gambar Anda */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+.location-hero h2 {
+    font-size: 3.5rem;
+    font-family: 'Rische Demo', serif;
+    letter-spacing: 2px;
+}
+.location-page-section {
+    padding: 50px;
+    max-width: 1100px;
+    margin: 2rem auto;
+    text-align: center;
+}
+.location-page-section > h1 {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+.location-content {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    text-align: left;
+}
+.map-and-details {
+    flex: 1.5; /* Lebih besar dari info box */
+    min-width: 300px;
+}
+.business-info {
+    flex: 1;
+    min-width: 280px;
+    background-color: #f7f7f7;
+    padding: 4rem;
+    height: fit-content;
+}
+.map-image-container {
+    margin-top: 1.5rem;
+    border: 1px solid #ddd;
+}
+.map-image-container img {
+    width: 100%;
+    display: block;
+}
+.map-and-details h2, .business-info h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+.map-and-details p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+.business-info ul {
+    list-style: none;
+    padding: 0;
+}
+.business-info ul li {
+    margin-bottom: 1rem;
+}
+
+/* Mengubah warna link agar tidak biru */
+.business-info a {
+    color: inherit; /* Mengambil warna dari elemen induk */
+    text-decoration: none; /* Menghilangkan garis bawah */
+}
+
+/* Menambahkan garis bawah saat kursor di atas link */
+.business-info a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    body { padding-top: 65px; }
+    .location-page-section { padding: 30px 20px; }
+    .location-content { flex-direction: column; }
+    .location-hero h2 { font-size: 2.5rem; }
+}
+
