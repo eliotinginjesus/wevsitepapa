@@ -362,7 +362,7 @@ a { text-decoration: none; color: inherit; }
     .hamburger { display: block; }
     section { padding: 30px 20px; }
 
-    .hero-wedding { margin-top: 68px; height: auto; padding: 40px 0;  background-position: 80% 30%; /* horizontal 50%, vertical 30% */
+    .hero-wedding { margin-top: 50px; height: auto; padding: 40px 0;  background-position: 80% 30%; /* horizontal 50%, vertical 30% */
   background-size: cover; }
      .hero-wedding .container { 
         position: absolute;
