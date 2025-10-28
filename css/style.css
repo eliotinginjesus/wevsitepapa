@@ -370,7 +370,7 @@ body {
       width: 100vw;
       height: 100vh;
       overflow: hidden;
-      padding: 0;
+      padding-top: 60px;
     }
 
     .hero img {
@@ -844,6 +844,7 @@ body {
       /* ====== Hero & Slider Mobile ====== */
       .hero {
         height: 100vh;
+        padding: 0px;
       }
       
       .slider-track.mobile-only {
