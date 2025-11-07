@@ -12,6 +12,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PENJAHIT TJI PHIN</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/popup.css" />
   <!-- Ini adalah komentar -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="preload" href="https://i.imghippo.com/files/jpe8007WLE.png" as="image">
@@ -39,7 +40,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="dropdown-content container">
                 <!-- Kolom Gambar Promo -->
                 <div class="dropdown-image">
-                  <img src="https://i.imghippo.com/files/jpe8007WLE.png" alt="Promo Terbaru">
+                  <img src="https://i.imghippo.com/files/FlmQ4390k.png" alt="Promo Terbaru">
                 </div>
                 <!-- Kolom Tautan Promo -->
                 <div class="dropdown-links">
@@ -241,8 +242,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-        </div>
-        <div class="header-center"><h2>PENJAHIT <span style="font-family: 'Playfair Display', serif;">TJI PHIN</span></h2></div>
+  </div>
+  <div class="header-center"><h2>PENJAHIT TJI PHIN</h2></div>
         <div class="header-right">
             <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" target="_blank" class="cta-button desktop-only">Konsultasi Sekarang</a>
             <button class="hamburger" aria-label="Menu">☰</button>
@@ -665,84 +666,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
 
-  // Desktop Slider
-  const slider = document.querySelector('.slider-track.desktop-only');
-  if (slider) {
-      const slides = Array.from(slider.children);
-      const slideCount = slides.length;
-
-      // Clone first & last for looping
-      const firstClone = slides[0].cloneNode(true);
-      const lastClone = slides[slides.length - 1].cloneNode(true);
-      slider.appendChild(firstClone);
-      slider.insertBefore(lastClone, slides[0]);
-
-      let index = 1;
-      let slideWidth = slides[0].getBoundingClientRect().width;
-
-      slider.style.transform = `translateX(-${slideWidth * index}px)`;
-      slider.style.transition = 'transform 0.7s ease-in-out';
-
-      function nextSlide() {
-        index++;
+  window.addEventListener('load', function() {
+    // Desktop Slider
+    const slider = document.querySelector('.slider-track.desktop-only');
+    if (slider) {
+        const slides = Array.from(slider.children);
+        const slideCount = slides.length;
+        const firstClone = slides[0].cloneNode(true);
+        const lastClone = slides[slides.length - 1].cloneNode(true);
+        slider.appendChild(firstClone);
+        slider.insertBefore(lastClone, slides[0]);
+        let index = 1;
+        let slideWidth = slides[0].getBoundingClientRect().width;
+        slider.style.transform = `translateX(-${slideWidth * index}px)`;
         slider.style.transition = 'transform 0.7s ease-in-out';
-        slider.style.transform = `translateX(-${slideWidth * index}px)`;
-      }
+        function nextSlide() { index++; slider.style.transition = 'transform 0.7s ease-in-out'; slider.style.transform = `translateX(-${slideWidth * index}px)`; }
+        slider.addEventListener('transitionend', () => { const currentSlides = slider.children; if (currentSlides[index] === firstClone) { slider.style.transition = 'none'; index = 1; slider.style.transform = `translateX(-${slideWidth * index}px)`; } if (currentSlides[index] === lastClone) { slider.style.transition = 'none'; index = slideCount; slider.style.transform = `translateX(-${slideWidth * index}px)`; } });
+        setInterval(nextSlide, 4000);
+        window.addEventListener('resize', () => { slideWidth = slides[0].getBoundingClientRect().width; slider.style.transition = 'none'; slider.style.transform = `translateX(-${slideWidth * index}px)`; });
+    }
 
-      slider.addEventListener('transitionend', () => {
-        const currentSlides = slider.children;
-        if (currentSlides[index] === firstClone) {
-          slider.style.transition = 'none';
-          index = 1;
-          slider.style.transform = `translateX(-${slideWidth * index}px)`;
+    // Mobile Slider
+    const mobileSlider = document.querySelector('.slider-track.mobile-only');
+    if (mobileSlider) {
+        const images = mobileSlider.querySelectorAll('img');
+        if (images.length > 0) {
+            const totalImages = images.length;
+            const firstClone = images[0].cloneNode(true);
+            mobileSlider.appendChild(firstClone);
+            let currentIndex = 0;
+            setInterval(() => {
+                currentIndex++;
+                mobileSlider.scrollTo({ left: mobileSlider.offsetWidth * currentIndex, behavior: 'smooth' });
+                if (currentIndex === totalImages) {
+                    setTimeout(() => {
+                        mobileSlider.scrollTo({ left: 0, behavior: 'auto' });
+                        currentIndex = 0;
+                    }, 700);
+                }
+            }, 4000);
         }
-        if (currentSlides[index] === lastClone) {
-          slider.style.transition = 'none';
-          index = slideCount;
-          slider.style.transform = `translateX(-${slideWidth * index}px)`;
-        }
-      });
-
-      setInterval(nextSlide, 4000);
-
-      window.addEventListener('resize', () => {
-        slideWidth = slides[0].getBoundingClientRect().width;
-        slider.style.transition = 'none';
-        slider.style.transform = `translateX(-${slideWidth * index}px)`;
-      });
-  }
-
-  // Mobile Slider
-  document.addEventListener('DOMContentLoaded', function () {
-    const mobileSlider = document.querySelector('.mobile-only');
-    if (!mobileSlider) return;
-
-    const images = mobileSlider.querySelectorAll('img');
-    if (images.length === 0) return;
-    const totalImages = images.length;
-
-    // Duplicate first slide at the end
-    const firstClone = images[0].cloneNode(true);
-    mobileSlider.appendChild(firstClone);
-
-    let currentIndex = 0;
-
-    setInterval(() => {
-        currentIndex++;
-        mobileSlider.scrollTo({
-            left: mobileSlider.offsetWidth * currentIndex,
-            behavior: 'smooth'
-        });
-
-        // If it's the last clone, reset without animation
-        if (currentIndex === totalImages) {
-            setTimeout(() => {
-                mobileSlider.scrollTo({ left: 0, behavior: 'auto' });
-                currentIndex = 0;
-            }, 700); // delay to match smooth animation duration
-        }
-    }, 4000);
+    }
   });
+
    // Accordion logic for mobile menu
     const accordionToggles = document.querySelectorAll('.mobile-accordion-toggle');
     accordionToggles.forEach(toggle => {
@@ -779,5 +745,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img src="https://i.imghippo.com/files/pA2043cE.png" 
        alt="WhatsApp" />
 </a>
+
+<!-- Pop-up Banner HTML -->
+<div id="popupBanner" class="popup-overlay">
+  <div class="popup-content">
+    <span class="close-button">&times;</span>
+    <!-- The banner image is wrapped in an anchor tag. You can change '#' to a specific URL if the banner should link somewhere. -->
+    <a href="https://wa.me/6285162564216?text=Halo%20saya%20tertarik%20dengan%20promo%20banner%20Anda" target="_blank" rel="noopener noreferrer">
+      <img src="https://i.imghippo.com/files/MJB1984lk.png" alt="Pop-up Banner Promo">
+    </a>
+  </div>
+</div>
+
+<script>
+    // Pop-up Banner Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('popupBanner');
+        if (!popup) return;
+
+        const closeButton = popup.querySelector('.close-button');
+        const popupKey = 'hasSeenPopup';
+
+        function showPopup() {
+            setTimeout(() => {
+                popup.style.display = 'flex';
+                popup.classList.add('fade-in');
+            }, 2000); // Show after 2 seconds
+        }
+
+        // Always show the pop-up on page load
+        showPopup();
+        const storedItemStr = localStorage.getItem(popupKey);
+        if (storedItemStr) {
+            const item = JSON.parse(storedItemStr);
+            const now = new Date();
+            if (now.getTime() > item.expiry) {
+                showPopup(); // Expired
+            }
+        } else {
+            showPopup(); // Not seen before
+        }
+
+        if(closeButton) {
+            closeButton.addEventListener('click', () => {
+                // Just hide the pop-up, don't set any timer
+                popup.style.display = 'none';
+                // Set the 24-hour timer ONLY when the user closes the pop-up.
+                const now = new Date();
+                const item = {
+                    value: true,
+                    expiry: now.getTime() + (24 * 60 * 60 * 1000), // 24 hours from now
+                };
+                localStorage.setItem(popupKey, JSON.stringify(item));
+            });
+        }
+    });
+</script>
 </body>
 </html>
