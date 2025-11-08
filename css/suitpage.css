@@ -33,7 +33,7 @@ section {
     margin-bottom: 0; /* Remove default margin */
 }
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -42,81 +42,180 @@ section {
 a { text-decoration: none; color: inherit; }
 
 /* Header */
- header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
-  background: #f6f6f6;
-  border-bottom: 1px solid #ddd;
-  z-index: 2000; /* Naikkan supaya paling atas */
-}
-
-    .header-left, .header-right {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
-
-    .header-left {
-      justify-content: flex-start;
-      gap: 25px;
-    }
-
-    .header-right {
-      justify-content: flex-end;
-    }
-
-    .header-center {
-      flex: 2;
-      text-align: center;
-    }
-
-    header h1 {
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: #f6f6f6;
+            border-bottom: 1px solid #ddd;
+            z-index: 2000;
+        }
+        .header-left, .header-right { flex: 1; display: flex; align-items: center; }
+        .header-left { justify-content: flex-start; gap: 25px; }
+        .header-right { justify-content: flex-end; }
+        .header-center { flex: 2; text-align: center; }
+        header h1, header h2 { 
       font-size: 24px;
       letter-spacing: 1px;
-      margin-left: 50px;
-    }
+      margin: 0; /* Hapus margin agar benar-benar di tengah */
+     }
+        header a { text-decoration: none; color: #111; font-size: 14px; }
 
-    header a {
-      text-decoration: none;
-      color: #111;
-      font-size: 14px;
-    }
-.cta-button {
-    border: 1px solid #000;
-    padding: 8px 16px;
-    color: #000;
-    background-color: transparent;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition: color 0.3s;
+        .cta-button {
+            border: 1px solid #000;
+            padding: 8px 16px;
+            color: #000;
+            background-color: transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background-color: #e0e0e0;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.4s ease-out;
+            z-index: -1;
+        }
+
+        .cta-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* --- Dropdown Menu Styles --- */
+        .dropdown {
+            position: relative;
+            padding-bottom: 24px; /* Bridge to keep hover active */
+            margin-bottom: -24px; /* Prevent layout shift */
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: fixed;
+            top: 65px; /* Corrected header height */
+            left: 0;
+            width: 100%;
+            background-color: #f6f6f6;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding-left: 45px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-content {
+            display: flex;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .dropdown-image {
+            flex-basis: 30%;
+            max-width: 300px;
+        }
+
+        .dropdown-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .dropdown-links {
+            flex-basis: 70%;
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .link-column h3 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+        }
+
+        .link-column a {
+            display: block;
+            margin-bottom: 0.75rem;
+            font-size: 14px;
+            color: #111;
+            transition: color 0.2s ease;
+        }
+
+        .link-column a:hover {
+            color: #888;
+        }
+        /* --- End Dropdown Menu Styles --- */
+        
+
+/* CSS untuk Peta di Dropdown Lokasi */
+.dropdown-image iframe {
+    width: 100%;
+    height: 250px; /* Sesuaikan tinggi peta */
+    border: 0;
+    border-radius: 8px; /* Opsional: sudut membulat */
 }
-.cta-button:hover { /* This is now mainly for triggering the pseudo-element */ }
 
-.cta-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background-color: #e0e0e0; /* Light grey fluid color */
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.4s ease-out;
-    z-index: -1;
+/* CSS untuk Info di Dropdown Lokasi */
+.link-column p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 10px; /* Jarak antar item info */
 }
 
-.cta-button:hover::before {
-    transform: translate(-50%, -50%) scale(1);
+.link-column p strong {
+    color: #111;
 }
 
+
+.link-column h3 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+}
+
+.link-column a {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 14px;
+    color: #111;
+    transition: color 0.2s ease;
+}
+
+.link-column a:hover {
+    color: #888;
+}
+/* --- End Dropdown Menu Styles --- */
+
+
+        /* --- End Dropdown Menu Styles --- */
 /* Mobile Navigation */
 .hamburger { display: none; font-size: 28px; background: none; border: none; cursor: pointer; }
 .mobile-nav {
