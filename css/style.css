@@ -1,5 +1,4 @@
-
-  @font-face {
+@font-face {
   font-family: 'Rische Demo';
   src: url('../fonts/rische-demo.woff2') format('woff2');
   font-weight: normal;
@@ -273,11 +272,16 @@ body {
       color: #000;
       background-color: transparent;
       transition: background-color 0.3s, color 0.3s;
+      display: inline-block; /* pastikan padding & ukuran stabil */
+      position: relative;    /* agar ::before positioning tidak mempengaruhi layout */
+      z-index: 1;
+      cursor: pointer;
     }
 
     .cta-button:hover {
       background-color: #000;
       color: #fff;
+      /* removed: transform: translate(-50%, -50%) scale(1); */
     }
 
     /* ====== Mobile Navigation ====== */
