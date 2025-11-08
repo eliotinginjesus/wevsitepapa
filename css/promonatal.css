@@ -548,14 +548,69 @@ section {
     margin-top: 1rem;
 }
 
+/* Experience & Why Us Sections */
+.experience, .why-us {
+      display: flex;
+   align-items: center;
+ overflow: hidden; padding-top: 60px; padding-bottom: 60px;
+}
+.experience { 
+    background: #F8F5F2; /* Beige background */
+    padding-bottom: 0; /* Make image flush with the bottom */
+}
+
+    .experience .text {
+      flex: 1;
+      max-width: 700px;
+      padding: 50px;
+      margin-left: 100px;
+    }
+
+    .experience p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    
+    .why-us {
+      padding-left: 0px;
+
+    }
+
+    .why-us .text {
+      flex: 1;
+      max-width: 700px;
+      padding-right: 50px;
+       padding-top: 50px;
+        padding-bottom: 50px;
+      padding-left: 20px;
+      margin-left: 100px;
+    }
+
+.experience .image, .why-us .image { flex: 1; display: flex;}
+.experience .image { justify-content: flex-end; margin-right: 100px;  }
+
+
+
+.why-us .image { justify-content: flex-start; }
+.experience .image img, .why-us .image img { width: 100%;
+    max-width: 700px;
+    height: auto; object-fit: cover; }
+
+.experience .cta-button,
+.why-us .cta-button {
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
 /* ====== Why Us Section (index.html) ====== */
 .why-us {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    padding-right: 80px;
     gap: 2rem;
-    padding: 40px 0 40px 50px; /* Padding kiri untuk teks */
     margin: 0;
     overflow: hidden;
     background: #f9f9f9; /* Warna latar sedikit beda */
@@ -885,6 +940,8 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
     padding-top: 65px; /* Sesuaikan dengan tinggi header */
     background-color: #333; /* Fallback jika gambar gagal dimuat */
     overflow: hidden;
+    margin-top: 60px;
+    margin-bottom: 0px;
 }
 
 /* Konten Teks di Kiri */
@@ -949,12 +1006,16 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
 
 /* Section Promo 2 (Momen Istimewa) - Container Utama */
 .promo-section-alt {
+    margin: 0;
+    padding-left: 0px;
+    padding-right: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
     display: block; /* Mengubah dari flex menjadi block agar judul bisa di atas */
-    padding: 80px 50px;
     background: #f9f9f9; /* Latar belakang abu-abu muda */
     display: flex; /* Mengubah kembali ke flex untuk penataan */
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 /* Judul section yang terpusat */
@@ -991,13 +1052,13 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
 .promo-section-alt .image-content {
     flex: 1;
     min-width: 300px;
-    max-width: 550px;
+    max-width: 750px;
 }
 
 .promo-section-alt .image-content img {
     width: 100%;
     height: auto;
-    max-height: 450px;
+    max-height: 750px;
     object-fit: cover;
     border-radius: 0;
     transition: transform 0.5s ease;
