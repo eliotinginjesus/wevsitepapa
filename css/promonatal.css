@@ -65,61 +65,73 @@ section {
     text-decoration: none;
 }
 
- /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: #f6f6f6;
-            border-bottom: 1px solid #ddd;
-            z-index: 2000;
-        }
-        .header-left, .header-right { flex: 1; display: flex; align-items: center; }
-        .header-left { justify-content: flex-start; gap: 25px; }
-        .header-right { justify-content: flex-end; }
-        .header-center { flex: 2; text-align: center; }
-        header h1, header h2 { 
-      font-size: 24px;
-      letter-spacing: 1px;
-      margin: 0; /* Hapus margin agar benar-benar di tengah */
-     }
-        header a { text-decoration: none; color: #111; font-size: 14px; }
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 20px 30px; /* Mengurangi padding kiri-kanan dari 50px menjadi 30px */
+    background: #f6f6f6;
+    border-bottom: 1px solid #ddd;
+    z-index: 2000;
+}
+.header-left, .header-right { flex: 1; display: flex; align-items: center; }
+.header-left { justify-content: flex-start; gap: 25px; }
+.header-right { justify-content: flex-end; }
+.header-center { flex: 2; text-align: center; }
+header h1, header h2 { 
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin: 0; /* Hapus margin default pada h2 */
+}
+header a { text-decoration: none; color: #111; font-size: 14px; }
 
-        .cta-button {
-            border: 1px solid #000;
-            padding: 8px 16px;
-            color: #000;
-            background-color: transparent;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            transition: color 0.3s;
-        }
+/* Style untuk link header non-dropdown agar konsisten */
+.header-link {
+    padding-bottom: 24px;
+    margin-bottom: -24px;
+    text-decoration: none;
+}
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300%;
-            height: 300%;
-            background-color: #e0e0e0;
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.4s ease-out;
-            z-index: -1;
-        }
+.cta-button {
+    border: 1px solid #000;
+    padding: 8px 16px;
+    color: #000;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.3s;
+    cursor: pointer; /* Tambahkan cursor pointer */
+    font-family: 'Open Sans', sans-serif; /* Pastikan font konsisten */
+    font-size: 14px; /* Samakan dengan link header */
+    text-decoration: none; /* Hapus underline jika ini <a> */
+    display: inline-block; /* Agar padding berfungsi */
+}
 
-        .cta-button:hover::before {
-            transform: translate(-50%, -50%) scale(1);
-        }
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s ease-out;
+    z-index: -1;
+}
 
-        /* --- Dropdown Menu Styles --- */
+.cta-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* --- Dropdown Menu Styles --- */
         .dropdown {
             position: relative;
             padding-bottom: 24px; /* Bridge to keep hover active */
@@ -171,30 +183,50 @@ section {
             justify-content: space-around;
             gap: 20px;
         }
+ 
+/* Container untuk membatasi lebar konten dropdown */
+.container {
+     max-width: 1200px; /* Atau lebar yang Anda inginkan */
+     margin: 0 auto; /* Tengah */
+     padding: 0 15px; /* Padding opsional */
+}
 
-        .link-column h3 {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #555;
-        }
+.dropdown-content {
+    display: flex;
+    gap: 40px;
+    padding: 40px 0;
+    max-width: 1200px; /* Sesuaikan dengan container */
+    margin: 0 auto;
+}
 
-        .link-column a {
-            display: block;
-            margin-bottom: 0.75rem;
-            font-size: 14px;
-            color: #111;
-            transition: color 0.2s ease;
-        }
+.dropdown-image {
+    flex-basis: 30%;
+    max-width: 300px;
+}
 
-        .link-column a:hover {
-            color: #888;
-        }
-        /* --- End Dropdown Menu Styles --- */
-        
+.dropdown-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0; /* Hapus border-radius jika ada */
+}
+.dropdown-image img:hover {
+    transform: none; /* Matikan efek hover di dalam dropdown */
+}
 
+.dropdown-links {
+    flex-basis: 70%;
+    display: flex;
+    /* Ganti justify-content agar kolom rata kiri */
+    justify-content: flex-start; 
+    gap: 40px; /* Beri jarak antar kolom */
+}
+
+.link-column {
+     flex: 1; /* Biarkan kolom tumbuh */
+     min-width: 180px; /* Lebar minimum */
+}
+ 
 /* CSS untuk Peta di Dropdown Lokasi */
 .dropdown-image iframe {
     width: 100%;
@@ -548,69 +580,14 @@ section {
     margin-top: 1rem;
 }
 
-/* Experience & Why Us Sections */
-.experience, .why-us {
-      display: flex;
-   align-items: center;
- overflow: hidden; padding-top: 60px; padding-bottom: 60px;
-}
-.experience { 
-    background: #F8F5F2; /* Beige background */
-    padding-bottom: 0; /* Make image flush with the bottom */
-}
-
-    .experience .text {
-      flex: 1;
-      max-width: 700px;
-      padding: 50px;
-      margin-left: 100px;
-    }
-
-    .experience p {
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      text-align: justify;
-    }
-    
-    .why-us {
-      padding-left: 0px;
-
-    }
-
-    .why-us .text {
-      flex: 1;
-      max-width: 700px;
-      padding-right: 50px;
-       padding-top: 50px;
-        padding-bottom: 50px;
-      padding-left: 20px;
-      margin-left: 100px;
-    }
-
-.experience .image, .why-us .image { flex: 1; display: flex;}
-.experience .image { justify-content: flex-end; margin-right: 100px;  }
-
-
-
-.why-us .image { justify-content: flex-start; }
-.experience .image img, .why-us .image img { width: 100%;
-    max-width: 700px;
-    height: auto; object-fit: cover; }
-
-.experience .cta-button,
-.why-us .cta-button {
-    margin-top: 1.5rem;
-    display: inline-block;
-}
-
 /* ====== Why Us Section (index.html) ====== */
 .why-us {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    padding-right: 80px;
     gap: 2rem;
+    padding: 40px 0 40px 50px; /* Padding kiri untuk teks */
     margin: 0;
     overflow: hidden;
     background: #f9f9f9; /* Warna latar sedikit beda */
@@ -940,8 +917,6 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
     padding-top: 65px; /* Sesuaikan dengan tinggi header */
     background-color: #333; /* Fallback jika gambar gagal dimuat */
     overflow: hidden;
-    margin-top: 60px;
-    margin-bottom: 0px;
 }
 
 /* Konten Teks di Kiri */
@@ -1006,16 +981,12 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
 
 /* Section Promo 2 (Momen Istimewa) - Container Utama */
 .promo-section-alt {
-    margin: 0;
-    padding-left: 0px;
-    padding-right: 80px;
-    padding-top: 60px;
-    padding-bottom: 60px;
     display: block; /* Mengubah dari flex menjadi block agar judul bisa di atas */
+    padding: 80px 50px;
     background: #f9f9f9; /* Latar belakang abu-abu muda */
     display: flex; /* Mengubah kembali ke flex untuk penataan */
     flex-wrap: wrap;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 
 /* Judul section yang terpusat */
@@ -1052,13 +1023,13 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
 .promo-section-alt .image-content {
     flex: 1;
     min-width: 300px;
-    max-width: 750px;
+    max-width: 550px;
 }
 
 .promo-section-alt .image-content img {
     width: 100%;
     height: auto;
-    max-height: 750px;
+    max-height: 450px;
     object-fit: cover;
     border-radius: 0;
     transition: transform 0.5s ease;
