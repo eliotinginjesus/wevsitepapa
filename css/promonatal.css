@@ -1427,6 +1427,7 @@ MEDIA QUERIES (RESPONSIVE)
     transform: scale(0.9);
     animation: popup-scale 0.3s ease-out forwards;
 }
+}
 
 @keyframes popup-scale {
     to {
