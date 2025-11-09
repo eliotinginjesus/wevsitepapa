@@ -827,7 +827,10 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
     height: 80vh; /* Buat lebih pendek dari hero utama */
     min-height: 500px;
     display: flex; /* Gunakan flex untuk penataan */
-    padding-top: 65px; /* Sesuaikan dengan tinggi header */
+        padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+ /* Sesuaikan dengan tinggi header */
     background-color: #333; /* Fallback jika gambar gagal dimuat */
     overflow: hidden;
     margin-top: 60px;
@@ -1090,17 +1093,20 @@ MEDIA QUERIES (RESPONSIVE)
      
 
     /* Penyesuaian Halaman Promo di Tablet */
-    .promo-hero { height: 70vh; min-height: 450px; }
+    .promo-hero { height: 70vh; min-height: 450px; 
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;}
     .promo-text-content {
          flex-basis: 60%; /* Teks sedikit lebih lebar */
-         padding: 30px 40px;
+             
+}
     }
     .promo-text-content h2 { font-size: 2.2rem; }
      
     .promo-section-alt, .promo-section-alt-2 {
         padding: 50px 30px;
     }
-}
 
 /* ========== RESPONSIVE MOBILE STYLES (<= 768px) ========== */
 @media (max-width: 768px) {
@@ -1149,14 +1155,18 @@ MEDIA QUERIES (RESPONSIVE)
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 70%;
+        height: 50%; /* Reduced from 70% to 50% */
         max-width: 100%; 
-        padding: 20px; 
-        padding-top: 100px; 
-        background: linear-gradient(to bottom, rgba(204, 200, 200, 0) 25%, #F8F5F2 100%);
+          padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;/* Reduced from 100px */
+        background: linear-gradient(to bottom, 
+            rgba(248, 245, 242, 0) 0%, 
+            rgba(248, 245, 242, 0.95) 40%, 
+            rgba(248, 245, 242, 1) 100%);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end; /* Changed from center to flex-end */
         align-items: center;
         text-align: center;
         margin-left: 0px;
@@ -1164,15 +1174,15 @@ MEDIA QUERIES (RESPONSIVE)
     }
 
     .promo-image-content::before {
-     content: ''; /* Lapisan gelap */
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background: rgba(192, 191, 191, 0.533); /* Overlay gelap */
-     z-index: 2; /* Di atas gambar, di bawah teks */
-}
+        content: ''; 
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(192, 191, 191, 0.2); /* Reduced opacity from 0.533 */
+        z-index: 2;
+    }
      
     /* Pastikan slider mobile-only menggunakan flex */
     .slider-track.mobile-only {
@@ -1208,8 +1218,8 @@ MEDIA QUERIES (RESPONSIVE)
 
     /* Section mobile */
     section:not(.navigation):not(.hero):not(.promo-hero) {
-        padding: 40px 20px; /* Padding seragam */
         margin-bottom: 20px; /* Kurangi margin bawah */
+        padding: 0PX;
     }
      
     /* Navigasi Pria/Wanita */
@@ -1315,16 +1325,31 @@ MEDIA QUERIES (RESPONSIVE)
      
     /* --- Halaman Promo Mobile --- */
     .promo-hero {
-        height: 70vh; /* Lebih pendek di mobile */
+        height: 100vh; /* Lebih pendek di mobile */
         min-height: 400px;
-        padding-top: 65px;
-    }
+            padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+    
     .promo-text-content {
+         position: relative;
          flex-basis: 100%; /* Teks ambil 100% */
          padding: 30px 20px;
-         justify-content: center; /* Teks di tengah vertikal */
+         justify-content: end; /* Teks di tengah vertikal */
          align-items: flex-start; /* Teks tetap rata kiri */
          text-align: left;
+         height;: 70vh;
+         min-width: 300px;
+         padding-top: 50px;
+         background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.7) 30%,
+            rgba(255, 255, 255, 0.9) 70%,
+            rgba(255, 255, 255, 1) 100%
+        );
+         margin-top: auto; /* Push content to bottom */
     }
     .promo-text-content h2 { font-size: 1.8rem; }
     .promo-text-content p { font-size: 1rem; }
@@ -1369,7 +1394,7 @@ MEDIA QUERIES (RESPONSIVE)
         bottom: 15px;
         right: 15px;
     }
-}
+
  
 /* CSS untuk Pop-up */
 .popup-overlay {

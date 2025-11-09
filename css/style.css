@@ -843,9 +843,8 @@ body {
     .header-center { flex: 1; text-align: left; }
     .header-right { flex: 0; }
     .hamburger { display: block; }
-    section { padding: 30px 20px; }
 
-      /* ====== Hero & Slider Mobile ====== */
+    /* ====== Hero & Slider Mobile ====== */
       .hero {
         height: 100vh;
         padding: 0px;
@@ -880,9 +879,8 @@ body {
       }
 
       /* Section mobile */
-      section:not(.navigation):not(.hero) {
-        padding: 30px 50px;
-        margin-bottom: 50px;
+      section {
+        padding: 30px 20px;
       }
 
       .about,
@@ -891,7 +889,7 @@ body {
       .why-us {
         flex-direction: column-reverse;
         align-items: center;
-        padding: 40px;
+        padding: 40px 20px;
         height: auto;
         gap: 1rem; 
         min-height: 0; 
@@ -990,3 +988,14 @@ body {
         font-size: 12px;
       }
     }
+
+.experience .text,
+.why-us .text {
+    text-align: left; /* Keep text left-aligned */
+}
+
+.experience .text a,
+.why-us .text a {
+    display: block;
+    text-align: center; /* Center the button container */
+}
