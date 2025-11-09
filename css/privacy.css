@@ -70,20 +70,36 @@ header a { text-decoration: none; color: #111; font-size: 14px; }
 
 /* ====== MOBILE NAV ====== */
 .mobile-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  background-color: #fdfdfd;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  transform: translateY(-100%);
-  transition: transform 0.4s ease-in-out;
-  z-index: 1999;
+   position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #fdfdfd;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+
+    /* --- PERUBAHAN --- */
+    /* 1. Ubah 'center' menjadi 'flex-start' */
+    /* Ini agar menu dimulai dari atas, bukan di tengah */
+    justify-content: flex-start; 
+
+    /* 2. Tambahkan overflow-y agar bisa di-scroll */
+    overflow-y: auto;
+
+    /* 3. (Opsional) Tambahkan padding & box-sizing */
+    /* Agar menu tidak terlalu mepet di atas dan bawah */
+    padding-top: 50px;
+    padding-bottom: 40px;
+    box-sizing: border-box; /* Pastikan padding termasuk dalam 100vh */
+    /* --- AKHIR PERUBAHAN --- */
+
+    align-items: center;
+    gap: 15px;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1999;
 }
 .mobile-nav.open {
   transform: translateY(0);
