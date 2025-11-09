@@ -187,13 +187,36 @@ body {
 /* Mobile Navigation */
 .hamburger { display: none; font-size: 28px; background: none; border: none; cursor: pointer; }
 .mobile-nav {
-    position: fixed; top: 0; left: 0; height: 100vh; width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
     background-color: #fdfdfd;
-    display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
-    padding: 100px 40px;
-    gap: 15px; transform: translateY(-100%); transition: transform 0.4s ease-in-out;
-    z-index: 1999;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+
+    /* --- PERUBAHAN --- */
+    /* 1. Ubah 'center' menjadi 'flex-start' */
+    /* Ini agar menu dimulai dari atas, bukan di tengah */
+    justify-content: flex-start; 
+
+    /* 2. Tambahkan overflow-y agar bisa di-scroll */
     overflow-y: auto;
+
+    /* 3. (Opsional) Tambahkan padding & box-sizing */
+    /* Agar menu tidak terlalu mepet di atas dan bawah */
+    padding-top: 40px;
+    padding-bottom: 40px;
+    box-sizing: border-box; /* Pastikan padding termasuk dalam 100vh */
+    /* --- AKHIR PERUBAHAN --- */
+
+    align-items: center;
+    gap: 25px;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1999;
 }
 .mobile-nav.open { transform: translateY(0); }
 .mobile-nav > a { font-size: 18px; padding: 10px 0; }
