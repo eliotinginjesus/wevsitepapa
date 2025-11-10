@@ -484,7 +484,7 @@ a { text-decoration: none; color: inherit; }
 
       }
     .hamburger { display: block; }
-    section { padding: 30px 20px; }
+    .section { padding: 30px 20px; }
 
     .hero-wedding { margin-top: 0px; height: 100vh; padding: 0px ;  background-position: 80% 30%; /* horizontal 50%, vertical 30% */
   background-size: cover; }

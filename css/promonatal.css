@@ -20,6 +20,8 @@ h1, h2, h3 {
     font-family: 'Rische Demo', 'Playfair Display', serif;
 }
 
+.section { padding: 30px 20px; }
+
 body {
     font-family: 'Open Sans', serif;
     line-height: 1.6;
@@ -1196,6 +1198,7 @@ MEDIA QUERIES (RESPONSIVE)
         text-align: center;
         margin-left: 0px;
         margin-top: 0px;
+       padding: 40px ;
     }
 
     .promo-image-content::before {
@@ -1244,7 +1247,7 @@ MEDIA QUERIES (RESPONSIVE)
     /* Section mobile */
     section:not(.navigation):not(.hero):not(.promo-hero) {
         margin-bottom: 20px; /* Kurangi margin bawah */
-        padding: 0PX;
+        padding: 40px 20px;
     }
      
     /* Navigasi Pria/Wanita */
