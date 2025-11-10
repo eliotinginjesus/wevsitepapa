@@ -20,7 +20,6 @@ h1, h2, h3 {
     font-family: 'Rische Demo', 'Playfair Display', serif;
 }
 
-.section { padding: 30px 20px; }
 
 body {
     font-family: 'Open Sans', serif;
@@ -996,7 +995,6 @@ CSS KHUSUS UNTUK HALAMAN PROMO (promo.html)
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    padding: 60px 50px;
     background: #fff; /* Latar belakang putih */
 }
  
@@ -1131,7 +1129,7 @@ MEDIA QUERIES (RESPONSIVE)
     }
     .promo-text-content h2 { font-size: 2.2rem; }
      
-    .promo-section-alt, .promo-section-alt-2 {
+    .promo-section-alt, {
         padding: 50px 30px;
     }
 
@@ -1259,7 +1257,6 @@ MEDIA QUERIES (RESPONSIVE)
     .services,
     .promo-section-alt {
         flex-direction: column; /* Teks di bawah, gambar di atas */
-        padding: 40px 20px;
         gap: 2rem; 
     }
      
@@ -1268,8 +1265,7 @@ MEDIA QUERIES (RESPONSIVE)
         gap: 2rem;
     }
 
-    .why-us,
-    .promo-section-alt-2 {
+    .why-us {
         flex-direction: column; /* Teks di bawah, gambar di atas */
         padding: 40px 20px;
         gap: 2rem;
