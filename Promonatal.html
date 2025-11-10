@@ -19,6 +19,7 @@
     <!-- CSS Eksternal -->
     <link rel="stylesheet" href="css/style.css" /> <!-- Menambahkan CSS utama -->
     <link rel="stylesheet" href="css/promonatal.css" />
+    <link rel="stylesheet" href="css\popup.css" />
 
 </head>
 <body>
@@ -523,67 +524,60 @@
         });
     });
     </script>
-    <script>
+    <!-- Pop-up Banner HTML -->
+    <div id="popupBanner" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <a href="https://wa.me/6285162564216?text=Halo%20saya%20tertarik%20dengan%20promo%20banner%20Anda" target="_blank">
+                <img src="https://i.imghippo.com/files/MJB1984lk.png" alt="Pop-up Banner Promo">
+            </a>
+        </div>
+    </div>
 
-    // Pop-up Banner Logic (unchanged behavior, minor safety checks)
+    <script>
+    // Pop-up Banner Logic
     document.addEventListener('DOMContentLoaded', function() {
         const popup = document.getElementById('popupBanner');
         if (!popup) return;
 
         const closeButton = popup.querySelector('.close-button');
-        const popupKey = 'hasSeenPopup_TjiPhin'; // Kunci unik
-        const expiryTime = 24 * 60 * 60 * 1000; // 24 jam
+        const popupKey = 'hasSeenPopup';
 
         function showPopup() {
             setTimeout(() => {
                 popup.style.display = 'flex';
                 popup.classList.add('fade-in');
-            }, 2000); // Tampil setelah 2 detik
-        }
-        
-        function hidePopup() {
-             popup.style.display = 'none';
+            }, 2000); // Show after 2 seconds
         }
 
+        // Always show the pop-up on page load
+        showPopup();
         const storedItemStr = localStorage.getItem(popupKey);
         if (storedItemStr) {
-            try {
-                const item = JSON.parse(storedItemStr);
-                const now = new Date();
-                if (now.getTime() > item.expiry) {
-                    // Sudah kadaluarsa, tampilkan lagi
-                    showPopup();
-                    localStorage.removeItem(popupKey); // Hapus data lama
-                } else {
-                    // Belum kadaluarsa, jangan tampilkan
-                    hidePopup();
-                }
-            } catch (e) {
-                // Data korup, tampilkan saja
-                 showPopup();
-                 localStorage.removeItem(popupKey);
+            const item = JSON.parse(storedItemStr);
+            const now = new Date();
+            if (now.getTime() > item.expiry) {
+                showPopup(); // Expired
             }
         } else {
-            // Belum pernah lihat, tampilkan
-            showPopup();
+            showPopup(); // Not seen before
         }
 
         if(closeButton) {
             closeButton.addEventListener('click', () => {
-                hidePopup();
-                
-                // Set timer 24 jam HANYA saat pengguna menutup pop-up
+                // Just hide the pop-up, don't set any timer
+                popup.style.display = 'none';
+                // Set the 24-hour timer ONLY when the user closes the pop-up.
                 const now = new Date();
                 const item = {
                     value: true,
-                    expiry: now.getTime() + expiryTime,
+                    expiry: now.getTime() + (24 * 60 * 60 * 1000), // 24 hours from now
                 };
                 localStorage.setItem(popupKey, JSON.stringify(item));
             });
         }
-    }
-
-    </script>
+    });
+</script>
     
     <!-- Floating WA Button -->
     <a href="https://wa.me/6285162564216?text=Halo%20saya%20ingin%20konsultasi" 
@@ -593,15 +587,5 @@
       <img src="https://i.imghippo.com/files/pA2043cE.png" 
            alt="WhatsApp" />
     </a>
-
-    <!-- Pop-up Banner HTML -->
-    <div id="popupBanner" class="popup-overlay">
-      <div class="popup-content">
-        <span class="close-button">&times;</span>
-        <a href="promo.html" rel="noopener noreferrer">
-          <img src="https://i.imghippo.com/files/MJB1984lk.png" alt="Pop-up Banner Promo Natal">
-        </a>
-      </div>
-    </div>
 </body>
 </html>
